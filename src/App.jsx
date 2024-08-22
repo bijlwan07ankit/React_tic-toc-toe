@@ -4,11 +4,15 @@ import GameBoard from "./Components/GameBoard";
 import Log from './Components/Log';
 function App() {
 const [gameTurns,setGameturns]=useState([]);
-  const [activePlayer,setActivePlayer]=useState('X');
+const [activePlayer,setActivePlayer]=useState('X');
 
-  function handleSelectSquare(){
+  function handleSelectSquare(rowIndex, colIndex){
     setActivePlayer((curActivePlayer)=> curActivePlayer==="X" ? "O" :"X");
-    };
+    setGameturns(prevTurns=>{
+      const updatedTurnes =[
+        {square : {row:rowIndex , col: colIndex }, player: activePlayer },
+        ...prevTurns]
+    })};
   
   return (
     <main>
